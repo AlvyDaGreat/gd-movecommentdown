@@ -7,6 +7,8 @@ class $modify(MyShareCommentLayer, ShareCommentLayer) {
 	bool init(gd::string p0, int p1, CommentType p2, int p3, gd::string p4) {
 		if (!ShareCommentLayer::init(p0,p1,p2,p3,p4)) { return false; }
 
+		if (p2 != CommentType::Level) { return true; }
+
 		auto amountY = Mod::get()->getSettingValue<double>("offset");
 		auto amountX = Mod::get()->getSettingValue<double>("xoffset");
 		auto node = dynamic_cast<cocos2d::CCNode*>(this->getChildren()->objectAtIndex(0));
